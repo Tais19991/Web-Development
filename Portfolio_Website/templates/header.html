@@ -1,0 +1,67 @@
+<!-- This template uses Bootstrap for styling -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Jane Doe</title>
+
+    {% block styles %}
+    <!-- Bootstrap-Flask CSS -->
+    {{ bootstrap.load_css() }}
+    <link rel="icon"
+          type="image/x-icon"
+          href="{{ url_for('static', filename='assets/favicon.png') }}" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+            crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static', filename='css/styles.css') }}"
+          rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+          rel="stylesheet"
+          type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+          rel="stylesheet"
+          type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/styles.css') }}"
+          rel="stylesheet" />
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark opacity-75">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav col-md-4 ms-md-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href={{url_for('index')}}>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{url_for('index')}}#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href={{url_for('contact')}}>Contact</a>
+                    </li>
+
+                    <!-- Only for admin logout-->
+                    {% if current_user.id == 1 %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-disabled="true" href={{url_for('logout')}}>Log Out</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

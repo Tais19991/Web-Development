@@ -1,0 +1,144 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/main-page.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-2 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <span class="h1">Data Scientist</span>
+          <span class="subheading">Collect, process, analyse and present data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content-->
+
+<div class="container position-relative px-4 px-lg-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{ url_for('static', filename='assets/img/profile-photo.png') }}" class="rounded d-block mx-lg-auto img-fluid" alt="Profile photo" width="300" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="fs-2 fw-semibold text-body-secondary lh-base mb-3">Jane Doe</h1>
+        <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Morbi tempus nibh sit amet luctus sollicitudin.
+            Suspendisse quis elementum magna, at tincidunt metus.
+            Mauris maximus massa a est posuere, vel dictum neque consequat.
+            Nam ac ornare lorem. Vestibulum tincidunt a libero non posuere.
+            Curabitur vulputate neque id mauris malesuada euismod.
+            Fusce justo ipsum, posuere in ligula nec, tristique maximus augue.
+            Aenean eget magna tempor, vestibulum purus faucibus, aliquam sem.
+            Sed accumsan ante dolor, et vehicula tellus sagittis vitae.
+            Proin efficitur, massa a sollicitudin blandit, velit mauris pharetra mauris,
+            nec bibendum velit dolor ac risus. Etiam sodales dignissim massa vitae faucibus. </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <a class="btn btn-outline-secondary btn-lg" href="https://www.linkedin.com/in/tatiana-kasatkina/" role="button">Linkedin</a>
+          <a class="btn btn-outline-secondary btn-lg" href="https://github.com/Tais19991" role="button">GitHub</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Portfolio -->
+<section id='portfolio' style="background:#41313E; padding: 60px 0; text-align: center; opacity: 75">
+      <h3 class="display-5 fw-bold text-white">Portfolio</h3>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4 text-white">Cras consequat tortor sit amet bibendum dapibus.
+            Vestibulum et nunc non nisi dapibus interdum. Proin vestibulum vitae dolor sit
+            amet fringilla. Nam enim lacus, ornare nec sem sed, ultricies bibendum tellus.
+            Nam venenatis, tellus in tincidunt mollis, felis justo viverra orci, dignissim
+            lobortis justo orci vitae diam.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        </div>
+      </div>
+</section>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      <!-- Portfolio Data Preview -->
+
+        {% for data in portfolio_data %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{{ url_for('static', filename='assets/img/' ~ data.img_main) }}" alt="some graph" class="card-img-top" width="100%" height="225"  role="img">
+
+            <div class="card-body">
+              <p class="card-text">{{data.title}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+
+
+                  <!-- Trigger Module Button -->
+                  <button type="button" class="btn btn-secondary" style="background:#41313E;" data-bs-toggle="modal" data-bs-target="#myModal-{{data.id}}" data-target=".bd-my-modal-lg">
+                  View
+                  </button>
+
+                  <!-- Edit / delete buttons only for Admin -->
+                  {% if current_user.id == 1: %}
+                  <a href="{{url_for('edit_data', data_id=data.id)}}" class="btn btn-outline-primary" role="button">Edit</a>
+                  <a href="{{url_for('delete_data', data_id=data.id) }}" class="btn btn-outline-danger" role="button">X</a>
+                  {% endif %}
+
+                  <!-- Modal -->
+                  <div class="modal fade bd-example-modal-lg" id="myModal-{{data.id}}" tabindex="-1" aria-labelledby="myModalLabel-{{data.id}}" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" id="{{data.id}}">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel-{{data.id}}">{{data.title}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+
+                            <!-- Modal content -->
+                              <div class="row">
+                                    <div class="col-md-12 center" style="margin-top: 25px;margin-bottom: 25px;">
+                                    <img src="{{ url_for('static', filename='assets/img/' + data.img_main) }}" width="500px" class="rounded mx-auto d-block">
+                                    <p style="max-width: 600px; text-align: left">{{data.subtitle}}</p>
+                                    </div>
+                                    <!-------Data Description---->
+                                    <div style="text-align: left">
+                                        <h5>Description</h5>
+                                        <hr>
+                                        <p>{{ data.description|safe }}</p>
+
+                                        <h5>Read more</h5>
+                                        <hr>
+                                        <div style="margin-top: 25px;margin-bottom: 25px;">
+                                            <span> The source code of the project are on <a href="https://github.com/Tais19991" style="color:blue">Github</a>.</span>
+                                        </div>
+                                    </div>
+                              <!-- Modal footer -->
+                              <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+ <!-- Add button only for Admin -->
+{% if current_user.id == 1: %}
+<a href="{{url_for('add_new_data')}}" class="btn btn-primary" role="button" style="margin-top: 25px;margin-bottom: 25px;">Add new data</a>
+{% endif %}
+</div>
+
+
+
+
+
+{% include "footer.html" %}

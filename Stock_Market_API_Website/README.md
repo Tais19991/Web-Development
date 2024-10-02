@@ -25,8 +25,8 @@ This is a web-based Stock Market Dashboard built with Flask, Chart.js, and Boots
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/stock-market-dashboard.git
-    cd stock-market-dashboard
+    git clone https://github.com/Tais19991/Web-Development/tree/main/Stock_Market_API_Website
+    cd Stock_Market_API_Website
     ```
 
 2. Create and activate a virtual environment:

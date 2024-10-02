@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Display Form to choose params -->
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+            {{render_form(form, novalidate=True, button_map={"submit": "secondary"}) }}
+        </div>
+    </div>
+<body>
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <h3>No data available</h3>
+        </div>
+    </div>
+</body>
+</html>

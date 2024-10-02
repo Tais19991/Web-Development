@@ -1,0 +1,95 @@
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Display Form to choose params -->
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+            {{render_form(form, novalidate=True, button_map={"submit": "secondary"}) }}
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">{{company}} Stock Price</h1>
+          </div>
+
+          <canvas class="my-4 w-100" id="myChart" width="1261" height="532" style="display: block; box-sizing: border-box; height: 426px; width: 1009px;"></canvas>
+          <script>
+                // Get the data passed from Flask
+                var labels = {{ chart_data['labels'] | safe }};
+                var closingPrices = {{ chart_data['closing_prices'] | safe }};
+                var openingPrices = {{ chart_data['opening_prices'] | safe }};
+
+                // Setup Chart.js
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels, // Dates from the API
+                        datasets: [
+                            {
+                                label: 'Closing Price',
+                                data: closingPrices, // Closing prices from the API
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 3,
+                                fill: true // Set to false to not fill the area under the line
+                            },
+                            {
+                                label: 'Opening Price',
+                                data: openingPrices, // Opening prices from the API
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 3,
+                                fill: true // Set to false to not fill the area under the line
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: false // Since stock prices aren't starting from zero
+                            }
+                        }
+                    }
+                });
+          </script>
+
+          <h2>{{symbols}}</h2>
+          <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <!-- Display the keys as table headers -->
+                        {% for key in all_data[0].keys() %}
+                            <th scope="col">{{ key }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Display the values as table rows -->
+                    {% for data in all_data %}
+                        <tr>
+                            {% for value in data.values() %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          </div>
+       </div>
+    </div>
+
+</body>
+</html>

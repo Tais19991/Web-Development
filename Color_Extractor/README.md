@@ -16,8 +16,8 @@ Color Extractor is a web application that allows users to upload an image and ex
 
 ## Installation
 1. Clone the repository:  
-`git clone https://github.com/Tais19991/Web-Development/edit/main/Picture_Color_Identifier` 
-`cd Picture_Color_Identifier`  
+`git clone https://github.com/Tais19991/Web-Development/edit/main/Color_Extractor)`   
+`cd Color_Extractor`  
 
 2. Create a virtual environment:  
 `python -m venv venv`  

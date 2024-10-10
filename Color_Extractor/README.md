@@ -15,32 +15,32 @@ Color Extractor is a web application that allows users to upload an image and ex
 - Pillow: Image processing library used to open and manipulate images.
 
 ## Installation
-1. Clone the repository:
-`git clone https://github.com/yourusername/color-extractor.git`
-`cd color-extractor`
+1. Clone the repository:  
+`git clone https://github.com/Tais19991/Web-Development/edit/main/Picture_Color_Identifier` 
+`cd Picture_Color_Identifier`  
 
-2. Create a virtual environment:
-`python -m venv venv`
-`source venv/bin/activate`  (# On Windows: `venv\Scripts\activate`)
+2. Create a virtual environment:  
+`python -m venv venv`  
+`source venv/bin/activate`  (# On Windows: `venv\Scripts\activate`)  
 
-3. Install the required packages:
-`pip install -r requirements.txt`
+3. Install the required packages:    
+`pip install -r requirements.txt`      
 
-4. Set up environment variables: 
-You need to set any MARKET_APP_KEY for the app to run.
-On Linux or macOS: `export MARKET_APP_KEY='your_secret_key'`
-On Windows: `set MARKET_APP_KEY='your_secret_key'`
+4. Set up environment variables:   
+You need to set any MARKET_APP_KEY for the app to run.  
+On Linux or macOS: `export MARKET_APP_KEY='your_secret_key'`  
+On Windows: `set MARKET_APP_KEY='your_secret_key'`  
 
-5. Run the Flask app:
-`flask run`
-Open your browser and visit http://127.0.0.1:5000/ to use the application.
+5. Run the Flask app:  
+`flask run`   
+Open your browser and visit http://127.0.0.1:5000/ to use the application.  
 
 ### Usage
-Home Page: Upload an image by clicking on the "Upload Image" button.
-Once uploaded, the app will display the extracted colors in both HEX and RGB formats, along with a visual preview of each color.
+Upload an image by clicking on the "Upload Image" button.  
+Once uploaded, the app will display the extracted colors in both HEX and RGB formats, along with a visual preview of each color.  
 
 #### Example
-Here's an example of how the application looks after uploading an image:
+Here's an example of how the application looks after uploading an image:  
 ![example2.png](example2.png)
 ![example.png](example.png)
 

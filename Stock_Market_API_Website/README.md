@@ -24,21 +24,21 @@ This is a web-based Stock Market Dashboard built with Flask, Chart.js, and Boots
 
 1. Clone the repository:
 
-    ```bash
+    ```
     git clone https://github.com/Tais19991/Web-Development/tree/main/Stock_Market_API_Website
     cd Stock_Market_API_Website
     ```
 
 2. Create and activate a virtual environment:
 
-    ```bash
+    ```
     python -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
     ```
 
 3. Install the required dependencies:
 
-    ```bash
+    ```
     pip install -r requirements.txt
     ```
 
@@ -57,9 +57,7 @@ This is a web-based Stock Market Dashboard built with Flask, Chart.js, and Boots
 
 5. Run the Flask application:
 
-    ```bash
-    flask run
-    ```
+   `flask run`
 
 6. Open your browser and visit `http://127.0.0.1:5000/`.
 
@@ -70,8 +68,11 @@ This is a web-based Stock Market Dashboard built with Flask, Chart.js, and Boots
 4. The table below the chart shows the raw data.
 
 ## Example
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
 
-![Dashboard Screenshot](DashboardScreen.png)
+
 
 ## Project Structure
 ## API Information
